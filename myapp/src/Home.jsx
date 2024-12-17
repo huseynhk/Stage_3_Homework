@@ -63,7 +63,6 @@ function Home() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [cvToDelete, setCvToDelete] = useState(null);
 
-
   const handleRowClick = (cv) => {
     setSelectedCv(cv);
   };
@@ -115,7 +114,7 @@ function Home() {
   return (
     <div className="myBg flex flex-col items-center md:justify-between py-6 px-6 md:px-16 min-h-screen">
       <div className="w-full flex flex-col md:flex-row gap-6 md:gap-20 items-center">
-        <div className="w-full md:w-7/12 bg-gray-50 p-4 shadow-md rounded-md h-[65vh]">
+        <div className="w-full md:w-7/12 bg-gray-50 p-4 shadow-md rounded-md h-[72vh]">
           <h2 className="text-2xl font-bold mb-4 text-gray-700">CV Form</h2>
 
           <Formik
@@ -131,6 +130,9 @@ function Home() {
               errors.fullName = validateName(values.fullName);
               errors.email = validateEmail(values.email);
               errors.phone = validatePhone(values.phone);
+              if (!values.image) {
+                errors.image = "Image is required!";
+              }
               if (!values.experience)
                 errors.experience = "Experience is required!";
               return Object.fromEntries(
@@ -146,7 +148,7 @@ function Home() {
             }}
           >
             {() => (
-              <Form className="space-y-8">
+              <Form className="space-y-7">
                 <div className="relative">
                   <Field
                     type="text"
@@ -194,7 +196,12 @@ function Home() {
                     type="text"
                     name="image"
                     placeholder="Image URL"
-                    className="w-full border p-2 rounded absolute top-10"
+                    className="w-full border p-2 rounded"
+                  />
+                  <ErrorMessage
+                    name="image"
+                    component="div"
+                    className="text-red-500 text-sm absolute top-10"
                   />
                 </div>
 
