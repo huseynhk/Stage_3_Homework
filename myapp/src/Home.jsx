@@ -116,7 +116,6 @@ function Home() {
       <div className="w-full flex flex-col md:flex-row gap-6 md:gap-20 items-center">
         <div className="w-full md:w-7/12 bg-gray-50 p-4 shadow-md rounded-md h-[72vh]">
           <h2 className="text-2xl font-bold mb-4 text-gray-700">CV Form</h2>
-
           <Formik
             initialValues={{
               fullName: "",
